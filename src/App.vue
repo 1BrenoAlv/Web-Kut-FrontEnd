@@ -1,22 +1,26 @@
 <template>
   <div class="flex flex-col min-h-screen bg-[#111222]">
     <header>
-      <AppHeader/>
+      <AppHeader />
     </header>
-    <router-view></router-view>
+    <main>
+      <RouterView />
+    </main>
     <footer class="mt-auto">
-      <AppFooter/>
+      <AppFooter />
     </footer>
   </div>
 </template>
-<script>
-import AppHeader from './components/layout/AppHeader.vue';
-import AppFooter from './components/layout/AppFooter.vue';
-export default {
-  name: 'App',
-  components:{
-    AppHeader,
-    AppFooter
-  }
-}
+<script setup>
+import AppHeader from './components/layout/AppHeader.vue'
+import AppFooter from './components/layout/AppFooter.vue'
+import { onMounted } from 'vue'
+import { useAuthStore } from '@/stores/authStore'
+import { RouterView } from 'vue-router'
+
+const authStore = useAuthStore()
+
+onMounted(() => {
+  authStore.checkAuth()
+})
 </script>

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-    baseURL: 'http://localhost:5134/api',
+    baseURL: 'https://localhost:7132',
     headers: {
         'Content-Type': 'application/json'
     }
@@ -24,29 +24,29 @@ export default {
         --------------AUTH----------------    
     */
     login(credenciais) { // LOGIN
-        return apiClient.post('auth/login', credenciais)
+        return apiClient.post('/api/Auth/login', credenciais)
     },
-    trocarSenha(credenciais) { // TRACAR SENHA
-        return apiClient.post('/Auth/ChangePassword', credenciais)
+    changePassword(credenciais) { // TRACAR SENHA
+        return apiClient.post('/api/Auth/ChangePassword', credenciais)
     },
     /*
         --------------USERS----------------    
     */
     getUsers() {
-        return apiClient.get('Users')
+        return apiClient.get('/api/Users')
     },
-    registro(userData) { // CADASTRO
-        return apiClient.post('auth/Users/register', userData)
+    register(userData) { // CADASTRO
+        return apiClient.post('/api/Users/register', userData)
     },
     
     /*
         --------------POSTS----------------    
     */
     getPosts() {
-        return apiClient.get('/Posts')
+        return apiClient.get('/api/Posts')
     },
-    criarPost(postData) {
-        return apiClient.post('/Posts', postData, {
+    postPost(postData) {
+        return apiClient.post('/api/Posts', postData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
@@ -55,7 +55,7 @@ export default {
     /*
         --------------LIKE----------------    
     */
-    darLike(postId) {
+    postLike(postId) {
         return apiClient.post(`/Post/${postId}`)
     }
     /*
