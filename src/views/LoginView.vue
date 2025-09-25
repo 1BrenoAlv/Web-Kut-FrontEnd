@@ -63,5 +63,5 @@ const handleLogin = async () => {
   } catch (error) {
     errorMessage.value = 'Email ou senha estão incorretos!';
   }
-};
+}
 </script>

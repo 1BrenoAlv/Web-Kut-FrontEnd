@@ -38,6 +38,12 @@ export default {
     register(userData) { // CADASTRO
         return apiClient.post('/api/Users/register', userData)
     },
+    deleteUsers(userId){
+        return apiClient.delete(`/api/Users/${id}`, userId)
+    },
+    updateUsers(userId){
+        return apiClient.put(`/api/Users/${id}`, userId)
+    },
     
     /*
         --------------POSTS----------------    
@@ -52,15 +58,27 @@ export default {
             }
         });
     },
+    updatePost(postId) {
+        return apiClient.put(`/api/Posts/${id}`, postId, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+    },
+    deletePost(postId) {
+        return apiClient.delete(`/api/Posts/${id}`, postId,)
+    },
     /*
         --------------LIKE----------------    
     */
     postLike(postId) {
         return apiClient.post(`/Post/${postId}`)
-    }
+    },
     /*
             --------------TYPE CONTENT----------------    
         */
-
+    getTypeContent() {
+        return apiClient.get(`/api/TypeContent`)
+    },
 
 }
