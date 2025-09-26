@@ -72,7 +72,7 @@ export default {
         --------------LIKE----------------    
     */
     postLike(postId) {
-        return apiClient.post(`/Post/${postId}`)
+        return apiClient.post(`/api/Like/${postId}`)
     },
     /*
             --------------TYPE CONTENT----------------    

@@ -1,10 +1,11 @@
 <template>
   <div class="flex-wrap justify-between ml-40 mt-10">
-    <PostCard/>
+    <AppMain/>
     </div>
 </template>
 <script setup>
-import PostCard from '@/components/posts/PostCard.vue';
+import AppMain from '@/components/layout/AppMain.vue';
+
 
 
 

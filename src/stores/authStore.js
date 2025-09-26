@@ -43,9 +43,8 @@ export const useAuthStore = defineStore('auth', () => {
   function checkAuth() {
     const localToken = localStorage.getItem('authToken');
     if (localToken) {
-      const decToken = jwtDecode(localToken);
-      // Verifica se o token expirou
-      if (decToken.exp * 1000 > Date.now()) {
+      const decToken = jwtDecode(localToken);  
+      if (decToken.exp * 1000 > Date.now()) { // Verifica se o token expirou
         setToken(localToken);
       } else {
         setToken(null);
