@@ -66,7 +66,7 @@ export default {
         });
     },
     deletePost(postId) {
-        return apiClient.delete(`/api/Posts/${id}`, postId,)
+        return apiClient.delete(`/api/Posts/${postId}`)
     },
     /*
         --------------LIKE----------------    

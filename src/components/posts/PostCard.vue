@@ -1,9 +1,9 @@
 <template>
   <div
-    class="flex w-full max-w-4xl bg-[#22255B]  rounded-xl overflow-hidden"
+    class="flex w-full max-w-4xl bg-[#22255B] border-b-[2px] border-[#6560EA] rounded-xl overflow-hidden"
   >
   <div class="w-[40%]">
-    <img v-if="imagePost" class="w-60 h-[100%] flex-shrink-0 object-cover h-full" :src="imagePost" />
+    <img v-if="imagePost" class="w-60 h-[100%] flex-shrink-0 object-cover " :src="imagePost" />
   </div>
 
     <div class="flex flex-col p-6 w-[100%]">
@@ -14,16 +14,21 @@
       </p>
 
       <div v-if="auth.isAuthenticated" class="flex items-endr justify-end mt-4">
-        <span class="text-white text-lg mr-2">{{ currentLikesCount }}</span>
-        <img
-          src="/public/hearth.svg"
-          alt="coração para curtir post"
+        <p class="text-white font-bold text-lg mr-2">{{ currentLikesCount }}</p>
+         <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none" 
+          stroke="#6560EA" 
+          stroke-width="3"
           :class="[
             'w-7 h-7 cursor-pointer transition-transform hover:scale-110 active:scale-95',
-            { 'fill-red-500': isLiked },
+            { 'liked': isLiked },
           ]"
           @click="toggleLike"
-        />
+        >
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
       </div>
     </div>
   </div>
@@ -60,7 +65,8 @@ const toggleLike = async () => {
 }
 </script>
 <style scoped>
-.fill-red-500 {
-  filter: invert(27%) sepia(85%) saturate(3065%) hue-rotate(334deg) brightness(97%) contrast(100%); /*CSS PARA O LIKE FICAR BONITO*/
+.liked {
+  fill: #E1706E; /*fundo like*/
+  stroke: #E1706E; /*borda like*/
 }
 </style>

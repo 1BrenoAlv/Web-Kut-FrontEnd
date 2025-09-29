@@ -16,7 +16,7 @@
 </template>
 <script setup>
 import PostCard from './PostCard.vue'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted} from 'vue'
 import api from '@/services/api'
 
 const posts = ref([]) // guarda os posts em uma lista
@@ -28,7 +28,7 @@ const getAllPosts = async () => {
   error.value = null
   try {
     const response = await api.getPosts()
-    posts.value = response.data
+    posts.value = response.data.reverse()
   } catch (erro) {
     error.value = 'Post não encontrado!'
     console.error(`Erro ao buscar posts ${erro}`)

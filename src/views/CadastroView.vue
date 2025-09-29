@@ -91,10 +91,10 @@ const handleRegister = async () => {
       password: password.value,
       username: username.value,
     }
-    console.log('PASSO 2: Dados coletados para enviar:', userData);
-     console.log('PASSO 3: Tentando chamar authStore.register...');
+    console.log('PASSO 2: Dados coletados para enviar:', userData)
+     console.log('PASSO 3: Tentando chamar authStore.register...')
     await authStore.register(userData)
-    console.log('PASSO 4: Chamada para authStore.register foi bem-sucedida!');
+    console.log('PASSO 4: Chamada para authStore.register foi bem-sucedida!')
     
     successMessage.value = 'Cadastro realizado com sucesso! Redirecionando...'
     setTimeout(() => {
@@ -102,7 +102,7 @@ const handleRegister = async () => {
     }, 2000)
 
   } catch (error) {
-      console.error('O objeto de erro completo que foi capturado é:', error); 
+      console.error('O objeto de erro completo que foi capturado é:', error)
     errorMessage.value = 'Erro ao cadastrar. O e-mail ou nome de usuário pode já estar em uso.'
   } finally {
     isLoading.value = false

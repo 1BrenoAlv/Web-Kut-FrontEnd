@@ -4,9 +4,5 @@
     </div>
 </template>
 <script setup>
-import AppMain from '@/components/layout/AppMain.vue';
-
-
-
-
+import AppMain from '@/components/layout/AppMain.vue'
 </script>

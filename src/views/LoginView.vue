@@ -58,10 +58,10 @@ const handleLogin = async () => {
       password: password.value 
     };
     
-    await authStore.login(credentials);
-    router.push('/');
+    await authStore.login(credentials)
+    router.push('/')
   } catch (error) {
-    errorMessage.value = 'Email ou senha estão incorretos!';
+    errorMessage.value = 'Email ou senha estão incorretos!'
   }
 }
 </script>
