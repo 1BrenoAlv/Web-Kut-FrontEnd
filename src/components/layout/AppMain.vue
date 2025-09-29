@@ -1,11 +1,11 @@
 <template>
-<main>
+<div class="flex-col justify-between">
     <CreatePost/>
-    <div class="flex gap-[20rem]">
+    <div class="flex gap-[15%]">
         <PostList/>
         <LatestPostsSidebar/>
     </div>
-</main>
+</div>
 </template>
 <script setup>
 import PostList from '../posts/PostList.vue'

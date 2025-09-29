@@ -5,8 +5,8 @@
   <div class="w-[40%]">
     <img v-if="imagePost" class="w-60 h-[100%] flex-shrink-0 object-cover " :src="imagePost" />
   </div>
-
     <div class="flex flex-col p-6 w-[100%]">
+      <h2 class="text-[20px] font-bold text-[#6560EA] mb-2">{{ username }}</h2>
       <h3 class="text-2xl font-bold text-white mb-2">{{ title  }}</h3>
 
       <p class="text-white leading-relaxed flex-grow">
@@ -41,6 +41,7 @@ import { useAuthStore } from '@/stores/authStore'
 const auth = useAuthStore()
 
 const props = defineProps({
+  username: String,
   title: String,
   content: String,
   postId: Number,

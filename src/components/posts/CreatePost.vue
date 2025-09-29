@@ -10,7 +10,7 @@
       <CreatePostModal :show="isModalVisible" @close="isModalVisible = false" />
     </div>
     <div v-else>
-      <h2 class="text-[25px] font-bold">Últimos Posts:</h2>
+      <h2 class="text-[25px] font-bold">Início</h2>
     </div>
   </div>
 </template>

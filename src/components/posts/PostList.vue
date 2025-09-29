@@ -3,6 +3,7 @@
     <PostCard
       v-for="post in posts"
       :key="post.id"
+      :username="post.user.username"
       :title="post.title"
       :content="post.content"
       :image-post="post.imageUrl ? `https://localhost:7132/${post.imageUrl}` : null"
@@ -16,7 +17,7 @@
 </template>
 <script setup>
 import PostCard from './PostCard.vue'
-import { ref, onMounted} from 'vue'
+import { ref, onMounted } from 'vue'
 import api from '@/services/api'
 
 const posts = ref([]) // guarda os posts em uma lista
@@ -28,6 +29,7 @@ const getAllPosts = async () => {
   error.value = null
   try {
     const response = await api.getPosts()
+    console.log('Dados recebidos pela API:', response.data)
     posts.value = response.data.reverse()
   } catch (erro) {
     error.value = 'Post não encontrado!'
