@@ -13,7 +13,7 @@
         {{ content }}
       </p>
 
-      <div v-if="auth.isAuthenticated" class="flex items-endr justify-end mt-4">
+      <div v-if="auth.isAuthenticated" class="flex items-end justify-end mt-4 pt-4 border-t border-gray-700">
         <p class="text-white font-bold text-lg mr-2">{{ currentLikesCount }}</p>
          <svg
           xmlns="http://www.w3.org/2000/svg"

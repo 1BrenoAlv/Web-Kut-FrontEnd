@@ -10,11 +10,11 @@
       <RouterLink
         to="/login"
         class="bg-[#6560EA] hover:bg-[#3e39d3] rounded-lg py-3 px-9 transition duration-200 ease-linear"
-        >Entrar</RouterLink
-      >
+        >Entrar</RouterLink>
     </div>
     <div v-else class="flex items-center space-x-4 text-white">
-      <span>Olá, {{ user?.username }}</span>
+      <p>Olá, {{ user?.username }}</p>
+       <RouterLink to="/meus-posts" class="bg-[#6560EA] hover:bg-[#3e39d3] rounded-lg py-2 px-6  transition duration-200 ease-linear">Meus Posts</RouterLink>
       <button
         @click="handleLogout"
         class="bg-[#E1706E] hover:bg-[#d84341] rounded-lg py-2 px-6 cursor-pointer"
@@ -33,6 +33,7 @@ import { useRouter } from 'vue-router'
 const dataAtualHora = ref(new Date())
 const horaFormatada = computed(() => dataAtualHora.value.toLocaleString('pt-BR'))
 let intervaloId = null;
+const isModalVisible = ref(false)
 
 onMounted(() => {
   intervaloId = setInterval(() => {

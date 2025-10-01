@@ -29,11 +29,9 @@ const getAllPosts = async () => {
   error.value = null
   try {
     const response = await api.getPosts()
-    console.log('Dados recebidos pela API:', response.data)
     posts.value = response.data.reverse()
   } catch (erro) {
     error.value = 'Post não encontrado!'
-    console.error(`Erro ao buscar posts ${erro}`)
   } finally {
     carregar.value = false
   }

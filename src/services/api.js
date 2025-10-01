@@ -58,8 +58,11 @@ export default {
             }
         });
     },
-    updatePost(postId) {
-        return apiClient.put(`/api/Posts/${id}`, postId, {
+    getMyPosts(){
+        return apiClient.get(`/api/Posts/MyPosts`)
+    },
+    updatePost(postId, formData) {
+        return apiClient.put(`/api/Posts/${postId}`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }

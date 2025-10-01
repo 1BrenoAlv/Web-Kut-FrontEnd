@@ -3,7 +3,7 @@
     <div class="bg-[#22255B] p-6 rounded-lg shadow-xl w-[30%]">
       <div class="flex justify-between items-center mb-4">
         <h2 class="text-xl font-bold">Criar Novo Post</h2>
-        <button @click="closeModal" class="text-[#6560EA] hover:scale-110 active:scale-95 text-3xl">&times;</button>
+        <button @click="closeModal" class="text-[#6560EA] hover:scale-110 active:scale-95 text-3xl cursor-pointer">&times;</button>
       </div>
       <form class="flex-col" @submit.prevent="createPostForm">
         <InputForm

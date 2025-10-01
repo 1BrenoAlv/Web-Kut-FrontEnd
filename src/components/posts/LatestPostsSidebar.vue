@@ -31,8 +31,16 @@ const latestPosts = computed(() => {
 
 function formatarData(dataISO) {
   if (!dataISO) return ''
-  const data = new Date(dataISO)
-  return data.toLocaleString('pt-BR')
+  const data = new Date(dataISO + 'Z')
+  
+  if (isNaN(data.getTime())) return 'Data inválida'
+
+  const opcoes = {
+    timeZone: 'America/Sao_Paulo',
+    dateStyle: 'short', 
+    timeStyle: 'medium' 
+  }
+  return new Intl.DateTimeFormat('pt-BR', opcoes).format(data)
 }
 
 const fetchPosts = async () => {
