@@ -1,4 +1,11 @@
 <template>
+  <div
+    v-if="posts.length === 0"
+    class="bg-[#22255B] w-[500px] border border-[#6560EA] mt-10 text-gray-300 p-8 rounded-lg text-center"
+  >
+    <p class="text-lg font-semibold">Não existe post criado!</p>
+  </div>
+  
   <div class="flex flex-col gap-8 p-8">
     <PostCard
       v-for="post in posts"
@@ -23,6 +30,7 @@ import api from '@/services/api'
 const posts = ref([]) // guarda os posts em uma lista
 const carregar = ref(false)
 const error = ref(null)
+
 
 const getAllPosts = async () => {
   carregar.value = true

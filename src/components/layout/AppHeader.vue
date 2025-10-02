@@ -4,7 +4,7 @@
   >
     <p>{{ horaFormatada }}</p>
     <RouterLink to="/"
-      ><img src="/src/assets/img/logo-ws.png" alt="logo da WebSupply" class="w-90"
+      ><img src="/src/assets/img/logo-ws.png" alt="WebSupply" class="w-90"
     /></RouterLink>
     <div v-if="!isAuthenticated">
       <RouterLink
@@ -14,7 +14,7 @@
     </div>
     <div v-else class="flex items-center space-x-4 text-white">
       <p>Olá, {{ user?.username }}</p>
-       <RouterLink to="/meus-posts" class="bg-[#6560EA] hover:bg-[#3e39d3] rounded-lg py-2 px-6  transition duration-200 ease-linear">Meus Posts</RouterLink>
+       <RouterLink to="/perfil" class="bg-[#6560EA] hover:bg-[#3e39d3] rounded-lg py-2 px-6  transition duration-200 ease-linear">Meu Perfil</RouterLink>
       <button
         @click="handleLogout"
         class="bg-[#E1706E] hover:bg-[#d84341] rounded-lg py-2 px-6 cursor-pointer"

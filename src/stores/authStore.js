@@ -18,11 +18,12 @@ export const useAuthStore = defineStore('auth', () => {
             user.value = {
                 id: decToken.nameid,
                 email: decToken.email,
-                username: decToken.unique_name
-            };
+                username: decToken.unique_name,
+                fullname: decToken.given_name || ''
+            }
         } else {
             localStorage.removeItem('authToken')
-            user.value = null;
+            user.value = null
         }
     }
 
@@ -52,5 +53,13 @@ export const useAuthStore = defineStore('auth', () => {
     }
   }
 
-  return { token, user, isAuthenticated, login, register, logout, checkAuth }
+  function setUser(userData) {
+      if (user.value) {
+        user.value.fullname = userData.fullName
+        user.value.username = userData.username
+        user.value.email = userData.email
+      }
+  }
+
+  return { token, user, isAuthenticated, login, register, logout, checkAuth, setUser}
 })

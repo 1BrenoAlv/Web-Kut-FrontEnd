@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
   <div v-if="show" class="fixed inset-0 bg-transparent backdrop-blur-sm flex justify-center items-center z-50">
     <div class="bg-[#22255B] p-6 rounded-lg shadow-xl w-[30%]">
       <div class="flex justify-between items-center mb-4">
@@ -8,6 +8,7 @@
 
       <form class="flex-col" @submit.prevent="updatePostForm">
         <InputForm
+        class="mb-6"
           valueLabel="Título"
           valueType="text"
           v-model="editablePost.title"
@@ -19,25 +20,17 @@
           v-model="editablePost.content"
           required
         />
-
-        <div class="my-4">
-          <label class="block text-white mb-2">Alterar Imagem (Opcional)</label>
-          <img v-if="currentImageUrl" :src="currentImageUrl" class="w-full h-32 object-cover rounded-lg mb-2" alt="Imagem atual">
-          <input 
-            type="file" 
-            @change="handleFileChange"
-            class="w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:text-sm file:font-semibold file:bg-[#2d2e5a] file:border-1 file:border-gray-700 file:text-[#6560EA] hover:file:bg-[#111222]"
-          >
+        
+        <div class="mt-6 flex justify-end">
+          <input type="submit" value="Salvar Alterações" class="bg-[#6560EA] hover:bg-[#3e39d3] rounded-lg py-2 px-6  transition duration-200 ease-linear">
         </div>
-
-        <input type="submit" value="Salvar Alterações" class="bg-[#6560EA] hover:bg-[#3e39d3] rounded-lg py-2 px-4 transition duration-200 ease-linear cursor-pointer">
       </form>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, watch, computed } from 'vue'
+import { ref, watch } from 'vue'
 import InputForm from '../common/InputForm.vue'
 import api from '@/services/api'
 
@@ -49,35 +42,23 @@ const props = defineProps({
 const emit = defineEmits(['close', 'post-updated'])
 
 const editablePost = ref({ title: '', content: '' })
-const newImageFile = ref(null)
-const currentImageUrl = ref(null)
+
 watch(() => props.postToEdit, (newPost) => {
   if (newPost) {
-    editablePost.value = { ...newPost } 
-    newImageFile.value = null 
-    currentImageUrl.value = `https://localhost:7132/${newPost.imageUrl}` 
+    editablePost.value = { ...newPost }
   }
 })
 
-function handleFileChange(event) {
-  newImageFile.value = event.target.files[0] || null
-}
-
-const updatePostForm = async () => {
+async function updatePostForm() {
   if (!props.postToEdit) return;
-
-  const formData = new FormData()
-  formData.append('id', props.postToEdit.id)
-  formData.append('title', editablePost.value.title)
-  formData.append('content', editablePost.value.content)
-  formData.append('typeContentId', newImageFile.value ? 2 : 1)
-
-  if (newImageFile.value) {
-    formData.append('imageFile', newImageFile.value)
+  const payload = {
+    title: editablePost.value.title,
+    content: editablePost.value.content,
+    typeContentId: 1 
   }
 
   try {
-    const response = await api.updatePost(props.postToEdit.id, formData)
+    const response = await api.updatePost(props.postToEdit.id, payload)
     
     emit('post-updated', response.data)
     closeModal()
@@ -91,4 +72,4 @@ const updatePostForm = async () => {
 function closeModal() {
   emit('close')
 }
-</script> -->
+</script>

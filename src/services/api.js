@@ -41,8 +41,8 @@ export default {
     deleteUsers(userId){
         return apiClient.delete(`/api/Users/${id}`, userId)
     },
-    updateUsers(userId){
-        return apiClient.put(`/api/Users/${id}`, userId)
+    updateUsers(userId, formData){
+        return apiClient.put(`/api/Users/${userId}`, formData)
     },
     
     /*
@@ -62,11 +62,7 @@ export default {
         return apiClient.get(`/api/Posts/MyPosts`)
     },
     updatePost(postId, formData) {
-        return apiClient.put(`/api/Posts/${postId}`, formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        });
+        return apiClient.put(`/api/Posts/${postId}`, formData)
     },
     deletePost(postId) {
         return apiClient.delete(`/api/Posts/${postId}`)

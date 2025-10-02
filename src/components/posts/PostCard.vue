@@ -1,15 +1,15 @@
 <template>
   <div
-    class="flex w-full max-w-4xl bg-[#22255B] border-b-[2px] border-[#6560EA] rounded-xl overflow-hidden"
+    class="flex w-full max-w-5xl bg-[#22255B] border-b-[2px] border-[#6560EA] rounded-xl overflow-hidden"
   >
   <div class="w-[40%]">
-    <img v-if="imagePost" class="w-60 h-[100%] flex-shrink-0 object-cover " :src="imagePost" />
+    <img v-if="imagePost" class="w-60 h-[100%] flex-shrink-0 object-cover" :src="imagePost" />
   </div>
     <div class="flex flex-col p-6 w-[100%]">
       <h2 class="text-[20px] font-bold text-[#6560EA] mb-2">{{ username }}</h2>
-      <h3 class="text-2xl font-bold text-white mb-2">{{ title  }}</h3>
+      <h3 class="text-2xl font-bold text-white mb-2 break-words">{{ title  }}</h3>
 
-      <p class="text-white leading-relaxed flex-grow">
+      <p class="text-white leading-relaxed flex-grow break-words">
         {{ content }}
       </p>
 

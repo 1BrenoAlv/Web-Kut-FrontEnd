@@ -13,14 +13,8 @@
           valuePlaceholder="exemplo@email.com"
           v-model="email"
         />
-        <InputForm
-          valueLabel="Senha"
-          valueType="password"
-          valueFor="password"
-          valueId="password"
-          valuePlaceholder="Digite sua senha"
-          v-model="password"
-        />
+        <InputPasswordForm label="Senha" placeholder="Digite sua senha" v-model="password" />
+
         <div v-if="errorMessage" class="text-center text-red-400">{{ errorMessage }}</div>
         <input
           type="submit"
@@ -43,6 +37,7 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/authStore'
 import { RouterLink } from 'vue-router'
+import InputPasswordForm from '@/components/common/InputPasswordForm.vue'
 
 const authStore = useAuthStore()
 const router = useRouter()
@@ -55,9 +50,9 @@ const handleLogin = async () => {
   try {
     const credentials = {
       email: email.value,
-      password: password.value 
+      password: password.value,
     }
-    
+
     await authStore.login(credentials)
     router.push('/')
     alert('Se Logou!🎉🎉')

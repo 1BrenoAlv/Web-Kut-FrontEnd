@@ -14,6 +14,14 @@
           v-model="fullName"
         />
         <InputForm
+        valueLabel="Nome de usuário"
+        valueType="text"
+        valueFor="username"
+        valueId="username"
+        valuePlaceholder="Nome123"
+        v-model="username"
+        />
+        <InputForm
           valueLabel="E-mail"
           valueType="email"
           valueFor="email"
@@ -21,21 +29,11 @@
           valuePlaceholder="exemplo@email.com"
           v-model="email"
         />
-        <InputForm
-          valueLabel="Senha"
-          valueType="password"
-          valueFor="password"
-          valueId="password"
-          valuePlaceholder="Digite sua senha (mín. 8 caracteres)"
+        <InputPasswordForm
+        class="mb-5"
+          label="Senha"
+          placeholder="Digite sua senha (mín. 8 caracteres)"
           v-model="password"
-        />
-        <InputForm
-          valueLabel="Nome de usuário"
-          valueType="text"
-          valueFor="username"
-          valueId="username"
-          valuePlaceholder="Nome123"
-          v-model="username"
         />
         <div v-if="errorMessage" class="text-center text-red-400">{{ errorMessage }}</div>
         <div v-if="successMessage" class="text-center text-green-400">{{ successMessage }}</div>
@@ -60,6 +58,7 @@ import InputForm from '@/components/common/InputForm.vue'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/authStore'
+import InputPasswordForm from '@/components/common/InputPasswordForm.vue'
 
 const authStore = useAuthStore()
 const router = useRouter()
@@ -74,12 +73,12 @@ const successMessage = ref('')
 const isLoading = ref(false)
 
 const handleRegister = async () => {
-      console.log('PASSO 1: handleRegister foi chamada.');
+  console.log('PASSO 1: handleRegister foi chamada.')
   if (password.value.length < 8) {
     errorMessage.value = 'A senha precisa ter no mínimo 8 caracteres.'
     return
   }
-  
+
   isLoading.value = true
   errorMessage.value = ''
   successMessage.value = ''
@@ -92,17 +91,16 @@ const handleRegister = async () => {
       username: username.value,
     }
     console.log('PASSO 2: Dados coletados para enviar:', userData)
-     console.log('PASSO 3: Tentando chamar authStore.register...')
+    console.log('PASSO 3: Tentando chamar authStore.register...')
     await authStore.register(userData)
     console.log('PASSO 4: Chamada para authStore.register foi bem-sucedida!')
-    
+
     successMessage.value = 'Cadastro realizado com sucesso! Redirecionando...'
     setTimeout(() => {
       router.push('/login')
     }, 2000)
-
   } catch (error) {
-      console.error('O objeto de erro completo que foi capturado é:', error)
+    console.error('O objeto de erro completo que foi capturado é:', error)
     errorMessage.value = 'Erro ao cadastrar. O e-mail ou nome de usuário pode já estar em uso.'
   } finally {
     isLoading.value = false
