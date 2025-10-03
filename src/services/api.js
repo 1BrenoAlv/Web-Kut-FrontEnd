@@ -26,7 +26,7 @@ export default {
     login(credenciais) { // LOGIN
         return apiClient.post('/api/Auth/login', credenciais)
     },
-    changePassword(credenciais) { // TRACAR SENHA
+    changePassword(credenciais) { // TROCAR SENHA
         return apiClient.post('/api/Auth/ChangePassword', credenciais)
     },
     /*
