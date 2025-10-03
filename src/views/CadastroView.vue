@@ -73,7 +73,6 @@ const successMessage = ref('')
 const isLoading = ref(false)
 
 const handleRegister = async () => {
-  console.log('PASSO 1: handleRegister foi chamada.')
   if (password.value.length < 8) {
     errorMessage.value = 'A senha precisa ter no mínimo 8 caracteres.'
     return
@@ -90,10 +89,7 @@ const handleRegister = async () => {
       password: password.value,
       username: username.value,
     }
-    console.log('PASSO 2: Dados coletados para enviar:', userData)
-    console.log('PASSO 3: Tentando chamar authStore.register...')
     await authStore.register(userData)
-    console.log('PASSO 4: Chamada para authStore.register foi bem-sucedida!')
 
     successMessage.value = 'Cadastro realizado com sucesso! Redirecionando...'
     setTimeout(() => {
