@@ -20,14 +20,14 @@
       <div class="mt-2">
         <button v-if="contentIsClamped && !isExpanded"
         @click="toggleExpanded"
-        class="text-[#6560EA] font-bold hover:underline"
+        class="text-[#6560EA] font-bold hover:underline cursor-pointer"
         >
         Ver mais
         </button>
         <button
           v-if="isExpanded"
           @click="toggleExpanded"
-          class="text-[#6560EA] font-bold hover:underline"
+          class="text-[#6560EA] font-bold hover:underline cursor-pointer"
         >
           Ver menos
         </button>

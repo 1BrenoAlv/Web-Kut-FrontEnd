@@ -104,23 +104,6 @@ const deletePost = async (postId) => {
   }
 }
 
-const isExpanded = ref(false)
-const contentIsClamped = ref(false)
-const contentRef = ref(null)
-
-const checkIfClamped = () => {
-  const element = contentRef.value
-  if (element) contentIsClamped.value = element.scrollHeight > element.clientHeight
-}
-
-onMounted(() => {
-  checkIfClamped()
-})
-
-const toggleExpanded = () => {
-  isExpanded.value = !isExpanded.value
-}
-
 onMounted(() => {
   listPost()
 })

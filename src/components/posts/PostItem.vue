@@ -3,9 +3,9 @@
     class="flex w-full max-w-5xl bg-[#22255B] border-b-[2px] border-[#6560EA] rounded-xl overflow-hidden transition-all duration-300"
     :class="isExpanded ? 'h-auto' : 'h-[300px]'"
   >
-    <div v-if="post.imageUrl" class="w-[40%] flex-shrink-0">
+    <div v-if="post.imageUrl" class="w-[40%] aspect-square">
       <img
-        class="w-full h-full object-cover"
+        class="w-full h-full object-fill"
         :src="`https://localhost:7132/${post.imageUrl}`"
         alt="Imagem do post"
       />
@@ -26,14 +26,14 @@
         <button
           v-if="contentIsClamped && !isExpanded"
           @click="toggleExpanded"
-          class="text-[#6560EA] font-bold hover:underline text-sm"
+          class="text-[#6560EA] font-bold hover:underline cursor-pointer"
         >
           Ver mais
         </button>
         <button
           v-if="isExpanded"
           @click="toggleExpanded"
-          class="text-[#6560EA] font-bold hover:underline text-sm"
+          class="text-[#6560EA] font-bold hover:underline cursor-pointer"
         >
           Ver menos
         </button>
