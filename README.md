@@ -5,7 +5,7 @@ Bem-vindo ao repositório do frontend do **WebKut**, uma aplicação web moderna
 
 ## 📜 Sobre o Projeto
 
-WebKut é uma plataforma social projetada para conectar pessoas através de postagens e interações. Este frontend consome uma API RESTful (ASP.NET) para realizar operações como autenticação de usuários, criação e visualização de posts, gerenciamento de perfil e muito mais. A interface foi construída com foco em reatividade, performance e um design limpo.
+WebKut é uma plataforma social projetada para conectar pessoas através de postagens e interações. Este frontend consome uma [API RESTful](https://github.com/1BrenoAlv/ApiWebKut) (ASP.NET) para realizar operações como autenticação de usuários, criação e visualização de posts, gerenciamento de perfil e muito mais. A interface foi construída com foco em reatividade, performance e um design limpo.
 
 -----
 
