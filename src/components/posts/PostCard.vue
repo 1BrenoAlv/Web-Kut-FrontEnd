@@ -1,12 +1,12 @@
 <template>
   <div
     class="flex w-full max-w-5xl bg-[#22255B] border-b-[2px] border-[#6560EA] rounded-xl overflow-hidden"
-    :class="isExpanded ? 'h-auto' : 'h-[450px]'"
+    :class="isExpanded ? 'h-auto' : 'h-[300px]'"
   >
-    <div class="w-[40%]">
-      <img v-if="imagePost" class="w-[70%] h-[100%] flex-shrink-0 object-cover" :src="imagePost" />
+    <div class="w-[40%] aspect-square" v-if="imagePost">
+      <img class="w-full h-full object-fill" :src="imagePost" />
     </div>
-    <div class="flex flex-col p-6 w-[60%]">
+    <div class="flex flex-col p-6 w-[100%]">
       <h2 class="text-[20px] font-bold text-[#6560EA] mb-2">{{ username }}</h2>
       <h3 class="text-2xl font-bold text-white mb-2 break-words">{{ title }}</h3>
 
