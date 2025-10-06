@@ -1,33 +1,57 @@
 <template>
   <div
     class="flex w-full max-w-5xl bg-[#22255B] border-b-[2px] border-[#6560EA] rounded-xl overflow-hidden"
+    :class="isExpanded ? 'h-auto' : 'h-[450px]'"
   >
-  <div class="w-[40%]">
-    <img v-if="imagePost" class="w-60 h-[100%] flex-shrink-0 object-cover" :src="imagePost" />
-  </div>
-    <div class="flex flex-col p-6 w-[100%]">
+    <div class="w-[40%]">
+      <img v-if="imagePost" class="w-[70%] h-[100%] flex-shrink-0 object-cover" :src="imagePost" />
+    </div>
+    <div class="flex flex-col p-6 w-[60%]">
       <h2 class="text-[20px] font-bold text-[#6560EA] mb-2">{{ username }}</h2>
-      <h3 class="text-2xl font-bold text-white mb-2 break-words">{{ title  }}</h3>
+      <h3 class="text-2xl font-bold text-white mb-2 break-words">{{ title }}</h3>
 
-      <p class="text-white leading-relaxed flex-grow break-words">
+      <p
+        ref="contentRef"
+        class="text-white leading-relaxed flex-grow break-words"
+        :class="{ 'line-clamp-5': !isExpanded }"
+      >
         {{ content }}
       </p>
-
-      <div v-if="auth.isAuthenticated" class="flex items-end justify-end mt-4 pt-4 border-t border-gray-700">
+      <div class="mt-2">
+        <button v-if="contentIsClamped && !isExpanded"
+        @click="toggleExpanded"
+        class="text-[#6560EA] font-bold hover:underline"
+        >
+        Ver mais
+        </button>
+        <button
+          v-if="isExpanded"
+          @click="toggleExpanded"
+          class="text-[#6560EA] font-bold hover:underline"
+        >
+          Ver menos
+        </button>
+      </div>
+      <div
+        v-if="auth.isAuthenticated"
+        class="flex items-end justify-end mt-4 pt-4 border-t border-gray-700"
+      >
         <p class="text-white font-bold text-lg mr-2">{{ currentLikesCount }}</p>
-         <svg
+        <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
-          fill="none" 
-          stroke="#6560EA" 
+          fill="none"
+          stroke="#6560EA"
           stroke-width="3"
           :class="[
             'w-7 h-7 cursor-pointer transition-transform hover:scale-110 active:scale-95',
-            { 'liked': isLiked },
+            { liked: isLiked },
           ]"
           @click="toggleLike"
         >
-          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          <path
+            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+          />
         </svg>
       </div>
     </div>
@@ -35,7 +59,7 @@
 </template>
 <script setup>
 import api from '@/services/api'
-import { ref, defineProps } from 'vue'
+import { ref, defineProps, onMounted } from 'vue'
 import { useAuthStore } from '@/stores/authStore'
 
 const auth = useAuthStore()
@@ -64,10 +88,27 @@ const toggleLike = async () => {
     console.error('Erro ao curtir/descurtir o post:', error)
   }
 }
+
+const isExpanded = ref(false)
+const contentIsClamped = ref(false)
+const contentRef = ref(null)
+
+const checkIfClamped = () => {
+  const element = contentRef.value
+  if (element) contentIsClamped.value = element.scrollHeight > element.clientHeight
+}
+
+onMounted(() => {
+  checkIfClamped()
+})
+
+const toggleExpanded = () => {
+  isExpanded.value = !isExpanded.value
+}
 </script>
 <style scoped>
 .liked {
-  fill: #E1706E; /*fundo like*/
-  stroke: #E1706E; /*borda like*/
+  fill: #e1706e; /*fundo like*/
+  stroke: #e1706e; /*borda like*/
 }
 </style>
