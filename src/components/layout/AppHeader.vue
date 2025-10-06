@@ -32,8 +32,7 @@ import { useRouter } from 'vue-router'
 
 const dataAtualHora = ref(new Date())
 const horaFormatada = computed(() => dataAtualHora.value.toLocaleString('pt-BR'))
-let intervaloId = null;
-const isModalVisible = ref(false)
+let intervaloId = null
 
 onMounted(() => {
   intervaloId = setInterval(() => {
@@ -51,6 +50,7 @@ const { isAuthenticated, user } = storeToRefs(authStore)
 
 function handleLogout() {
   authStore.logout()
+  alert('Você se foi... mas as memórias (e seus posts) permanecerão. Volte em breve!')
   router.push('/login')
 }
 </script>

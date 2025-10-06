@@ -55,7 +55,7 @@ const handleLogin = async () => {
 
     await authStore.login(credentials)
     router.push('/')
-    alert('Se Logou!🎉🎉')
+    alert('E não é que a senha estava certa? Pode entrar!')
   } catch (error) {
     errorMessage.value = 'Email ou senha estão incorretos!'
   }

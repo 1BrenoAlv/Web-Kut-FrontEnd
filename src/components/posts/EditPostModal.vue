@@ -12,6 +12,7 @@
           valueLabel="Título"
           valueType="text"
           v-model="editablePost.title"
+          :valueLength="titleLength"
           required
         />
         <InputForm
@@ -39,6 +40,8 @@ const props = defineProps({
   postToEdit: Object,
 })
 
+const titleLength = ref(100)
+
 const emit = defineEmits(['close', 'post-updated'])
 
 const editablePost = ref({ title: '', content: '' })
@@ -62,6 +65,7 @@ async function updatePostForm() {
     
     emit('post-updated', response.data)
     closeModal()
+    alert('Corrigido! Ninguém precisa saber como era antes.')
   } 
   catch (error) {
     console.error("Erro ao atualizar post:", error.response?.data || error.message)

@@ -1,7 +1,7 @@
 <template>
   <div
     class="flex w-full max-w-5xl bg-[#22255B] border-b-[2px] border-[#6560EA] rounded-xl overflow-hidden"
-    :class="isExpanded ? 'h-auto' : 'h-[300px]'"
+    :class="isExpanded ? 'h-auto' : 'h-[400px]'"
   >
     <div class="w-[40%] aspect-square" v-if="imagePost">
       <img class="w-full h-full object-fill" :src="imagePost" />

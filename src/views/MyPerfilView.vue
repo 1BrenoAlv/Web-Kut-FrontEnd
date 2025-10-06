@@ -97,7 +97,7 @@ const deletePost = async (postId) => {
   try {
     await api.deletePost(postId)
     posts.value = posts.value.filter((p) => p.id !== postId)
-    alert('Post excluído com sucesso!')
+    alert('DELETE FROM posts WHERE id = ... concluído. O post agora vive apenas na memória (cache do seu navegador, talvez).')
   } catch (err) {
     console.error('Erro ao excluir post:', err)
     alert('Falha ao excluir o post.')

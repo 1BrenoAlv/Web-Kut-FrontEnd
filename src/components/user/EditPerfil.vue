@@ -13,13 +13,15 @@
         v-model="editableUser.fullname"
         required
          class="mb-6"
+           :valueLength="fullnameLength"
       />
       <InputForm
         valueLabel="Nome de Usuário"
         valueType="text"
         v-model="editableUser.username"
         required
-        class="mb-6"
+        class="mb-6" 
+        :valueLength="usernameLength"
       />
       <InputForm
         valueLabel="Email"
@@ -49,6 +51,8 @@ const authStore = useAuthStore()
 
 const editableUser = ref({ fullname: '', username: '', email: '' })
 const isLoading = ref(true)
+const usernameLength = ref(20)
+const fullnameLength = ref(150)
 
 onMounted(() => {
   if (authStore.user) {
@@ -76,7 +80,7 @@ async function updateUserForm() {
     
     authStore.setUser(response.data)
 
-    alert('Perfil atualizado com sucesso!');
+    alert('Tudo certo! Perfil novinho em folha.');
   } 
   catch (error) {
     console.error("Erro ao atualizar os dados:", error.response?.data || error.message)

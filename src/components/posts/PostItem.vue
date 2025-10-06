@@ -1,7 +1,7 @@
 <template>
   <li
     class="flex w-full max-w-5xl bg-[#22255B] border-b-[2px] border-[#6560EA] rounded-xl overflow-hidden transition-all duration-300"
-    :class="isExpanded ? 'h-auto' : 'h-[300px]'"
+    :class="isExpanded ? 'h-auto' : 'h-[400px]'"
   >
     <div v-if="post.imageUrl" class="w-[40%] aspect-square">
       <img
@@ -12,7 +12,7 @@
     </div>
 
     <div class="flex flex-col p-6" :class="post.imageUrl ? 'w-[60%]' : 'w-full'">
-      <h2 class="text-2xl font-bold text-white mb-2">{{ post.title }}</h2>
+      <h2 class="text-2xl font-bold w-full text-white mb-2 break-words">{{ post.title }}</h2>
 
       <p
         ref="contentRef"

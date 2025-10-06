@@ -12,8 +12,10 @@
           valueFor="title"
           valueId="title"
           valuePlaceholder="Digite seu titulo"
+          :valueLength="titleLength"
           v-model="title"
           required
+          class="mb-5"
         />
         <InputForm
           valueLabel="Conteúdo"
@@ -45,6 +47,7 @@ import InputForm from '../common/InputForm.vue'
 import api from '@/services/api'
 
 const title = ref('')
+const titleLength = ref(100)
 const content = ref('')
 const image = ref(null)
 const typeContentId = computed(() => {
@@ -75,6 +78,7 @@ const createPostForm = async () => {
     await api.postPost(formData)
     closeModal()
     window.location.reload()
+    alert('Conteúdo compilado e implantado com sucesso no feed. Que os algoritmos estejam a seu favor.')
   } 
   catch (error) {
     console.error("Erro ao criar post:", error.response?.data || error.message)

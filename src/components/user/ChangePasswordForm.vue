@@ -28,7 +28,6 @@
 
 <script setup>
 import { ref } from 'vue'
-import InputForm from '../common/InputForm.vue'
 import api from '@/services/api'
 import InputPasswordForm from '../common/InputPasswordForm.vue'
 
@@ -40,20 +39,14 @@ const isLoading = ref(false)
 const error = ref(null)
 const successMessage = ref(null)
 
-const currentPasswordType = ref('password')
-const newPasswordType = ref('password')
-
-function toggleVisibility(field) {
-  if (field === 'current') {
-    currentPasswordType.value = currentPasswordType.value === 'password' ? 'text' : 'password'
-  } else if (field === 'new') {
-    newPasswordType.value = newPasswordType.value === 'password' ? 'text' : 'password'
-  }
-}
-
 async function handleChangePassword() {
   error.value = null
   successMessage.value = null
+  
+  if (confirmPassword.value.length < 8) {
+    error.value = 'A senha precisa ter no mínimo 8 caracteres.'
+    return
+  }
 
   if (newPassword.value !== confirmPassword.value) {
     error.value = 'A nova senha é diferente da confirmação!'
@@ -71,7 +64,9 @@ async function handleChangePassword() {
   try {
     await api.changePassword(payload)
     successMessage.value = 'Senha alterada com sucesso!'
-    alert('Senha alterada com sucesso!')
+    alert(
+      'Nova senha definida! Agora está mais segura que a receita secreta daquele refrigerante famoso.',
+    )
     currentPassword.value = ''
     newPassword.value = ''
     confirmPassword.value = ''
