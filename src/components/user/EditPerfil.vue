@@ -51,7 +51,7 @@ const authStore = useAuthStore()
 
 const editableUser = ref({ fullname: '', username: '', email: '' })
 const isLoading = ref(true)
-const usernameLength = ref(20)
+const usernameLength = ref(15)
 const fullnameLength = ref(150)
 
 onMounted(() => {

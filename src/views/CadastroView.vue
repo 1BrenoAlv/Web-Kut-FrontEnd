@@ -11,6 +11,7 @@
           valueFor="nome"
           valueId="nome"
           valuePlaceholder="Nome Completo"
+          :valueLength="fullNameLength"
           v-model="fullName"
         />
         <InputForm
@@ -18,6 +19,7 @@
         valueType="text"
         valueFor="username"
         valueId="username"
+        :valueLength="usernameLength"
         valuePlaceholder="Nome123"
         v-model="username"
         />
@@ -67,6 +69,8 @@ const fullName = ref('')
 const email = ref('')
 const password = ref('')
 const username = ref('')
+const fullNameLength = ref(150)
+const usernameLength = ref(15)
 
 const errorMessage = ref('')
 const successMessage = ref('')
