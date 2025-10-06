@@ -6,9 +6,9 @@
     <div class="w-[40%] aspect-square" v-if="imagePost">
       <img class="w-full h-full object-fill" :src="imagePost" />
     </div>
-    <div class="flex flex-col p-6 w-[100%]">
+    <div class="flex flex-col p-6 w-[60%]" :class="imagePost ? 'w-[60%]' : 'w-full'">
       <h2 class="text-[20px] font-bold text-[#6560EA] mb-2">{{ username }}</h2>
-      <h3 class="text-2xl font-bold text-white mb-2 break-words">{{ title }}</h3>
+      <h3 class="text-2xl font-bold text-white mb-2 flex-grow break-words">{{ title }}</h3>
 
       <p
         ref="contentRef"
@@ -17,7 +17,7 @@
       >
         {{ content }}
       </p>
-      <div class="mt-2">
+      <div class="">
         <button v-if="contentIsClamped && !isExpanded"
         @click="toggleExpanded"
         class="text-[#6560EA] font-bold hover:underline cursor-pointer"

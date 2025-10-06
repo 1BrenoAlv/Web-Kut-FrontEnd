@@ -1,13 +1,13 @@
 <template>
   <div>
-    <aside class="border-l-[4px] border-[#6560EA] pl-6 pb-3 pt-3">
+    <aside class="border-l-[4px] w-80 border-[#6560EA] pl-6 pb-3 pt-3">
       <h2 class="text-shadow-white text-[25px] font-bold mb-4 text-lg">Últimas Postagens</h2>
 
       <p v-if="loading" class="text-gray-400">Carregando...</p>
 
-      <ul v-else class="space-y-4">
+      <ul v-else class="space-y-4 ">
         <li v-for="post in latestPosts" :key="post.id">
-          <h3 class="text-[#6560EA] text-[20px] font-semibold">{{ post.title }}</h3>
+          <h3 class="text-[#6560EA] text-[20px] font-semibold flex-grow break-words">{{ post.title }}</h3>
           <p class="text-gray-400 text-sm">{{ formatarData(post.updatedAt) }}</p>
         </li>
       </ul>
