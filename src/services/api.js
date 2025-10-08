@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "axios"
 
 const apiClient = axios.create({
     baseURL: 'https://localhost:7132',
@@ -12,7 +12,7 @@ apiClient.interceptors.request.use((config) => {
     if (token) {
         config.headers.Authorization = `Bearer ${token}`
     }
-    return config;
+    return config
 },
     (error) => {
         return Promise.reject(error)
@@ -56,7 +56,7 @@ export default {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
-        });
+        })
     },
     getMyPosts(){
         return apiClient.get(`/api/Posts/MyPosts`)
